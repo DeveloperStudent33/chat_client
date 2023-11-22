@@ -15,6 +15,7 @@ Befehle:
 - getUsers      -> Alle Nutzer abrufen [Abruf einer Liste der Nutzer (= mögliche Chat-Partner]
 - createGroup   -> erstell eine Gruppe -> Gruppe muss nur währedn das Programm an ist leben -> kann direkt vergessen werde
 - getGroup      -> zeigt alle Gruppen an (?)
+- exit          -> Programm schließen/abbrechen
 
 Klassen:
 1. Repräsentation eines einzelnen Chat-Partners
