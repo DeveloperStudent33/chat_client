@@ -1,3 +1,5 @@
+package de.thm.oop.chat;
+
 import de.thm.oop.chat.base.server.BasicTHMChatServer;
 
 import java.io.IOException;
