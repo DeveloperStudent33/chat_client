@@ -2,7 +2,6 @@ package de.thm.oop.chat.nachrichten;
 
 import de.thm.oop.chat.Benutzer;
 import de.thm.oop.chat.empfaenger.Empfaenger;
-
 import java.io.IOException;
 import java.io.InputStream;
 

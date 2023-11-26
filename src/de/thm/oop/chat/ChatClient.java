@@ -36,4 +36,8 @@ public class ChatClient {
         }
         return true;
     }
+
+    public Benutzer getBenutzer() {
+        return benutzer;
+    }
 }
