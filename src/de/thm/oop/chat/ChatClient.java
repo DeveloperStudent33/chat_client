@@ -14,7 +14,7 @@ public class ChatClient {
         getData();
         CommandHandler commands = new CommandHandler();
         while (aktiv){
-            String eingabe = this.eingabe.next();
+            String eingabe = this.eingabe.nextLine();
             commands.commandAuswahl(commands.filterCommand(eingabe));
         }
     }

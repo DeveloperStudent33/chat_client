@@ -12,28 +12,6 @@ public class CommandHandler {
         return input.split(" ");
     }
 
-    /*public void filterCommand(String input) {
-        String[] eingabe = input.split(" ");
-        System.out.println("TEST" + eingabe.length);
-        for (int i = 0; i < eingabe.length; i++) {
-            System.out.print(eingabe[i] + " : ");
-            System.out.print(i);
-        }
-        //System.out.println(eingabe[2]);
-    }*/
-
-    public void filterXCommand(String input) {
-        char[] arr = input.toCharArray();
-        for (int i = 0; i < arr.length; i++) {
-            if(arr[i] == ' '){
-                arr[i] = 1;
-            }else{
-                arr[i] = 0;
-            }
-        }
-        //String[] subStrings =
-    }
-
     public void commandAuswahl(String[] inputFiltered) {
         switch (inputFiltered[0]) {
             case "msg": // Daniel
@@ -76,9 +54,9 @@ public class CommandHandler {
     }
 
     public void createGroup(String[] inputFiltered) { //Name
-        String[] groupMembers = new String[((inputFiltered.length))];
-        for (int i = 0; i < groupMembers.length; i++) {
-            groupMembers[i] = inputFiltered[i + 1];
+        String[] groupMembers = new String[inputFiltered.length-1];
+        for (int i = 1; i < inputFiltered.length; i++) {
+            groupMembers[i-1] = inputFiltered[i];
         }
 
         /*
@@ -97,11 +75,8 @@ public class CommandHandler {
     }
 
     public void getGroup() {
-        for (int i = 0; i <= group.getMembers().size(); i++) {
-            for (Receiver member : group.getMembers()) {
-                System.out.println(i + 1 + ". " + member.getName());
-            }
+        for (int i = 0; i < group.getMembers().size(); i++){
+            System.out.println(i + 1 + ". " + group.getMembers().get(i).getName());
         }
-
     }
 }
