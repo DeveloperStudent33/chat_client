@@ -4,7 +4,7 @@ Noch zu machen:
 - Ausführung der Befehle
 
 Befehle:
-- msg           -> Einzelnachricht
+- msg           -> Einzelnachricht                  -> msg [Empfänger] [Nachricht] (schickt eine Nachricht ab)
 - msgG          -> Gruppennachricht
 - msgP          -> Bildnachricht
 - msgGP         -> Gruppenbildnachricht

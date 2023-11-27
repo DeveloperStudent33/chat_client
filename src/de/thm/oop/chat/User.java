@@ -1,12 +1,10 @@
 package de.thm.oop.chat;
 
-import de.thm.oop.chat.empfaenger.Empfaenger;
-
-public class Benutzer extends Empfaenger {
+public class User {
     private String benutzername;
     private String passwort;
 
-    public Benutzer(String benutzername, String passwort) {
+    public User(String benutzername, String passwort) {
         this.benutzername = benutzername;
         this.passwort = passwort;
     }
