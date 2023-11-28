@@ -8,9 +8,17 @@ public abstract class Message {
     private Receiver receiver;
     private BasicTHMChatServer server = new BasicTHMChatServer();
 
-    public abstract void send(User user, Receiver receiver);
+    public Message(Receiver receiver){
+        this.receiver = receiver;
+    }
+
+    public abstract void send(User user);
 
     public BasicTHMChatServer getServer() {
         return server;
+    }
+
+    public Receiver getReceiver() {
+        return receiver;
     }
 }

@@ -6,24 +6,25 @@ import de.thm.oop.chat.base.server.BasicTHMChatServer;
 
 public class ChatClient {
     private User user;
-    private Scanner eingabe = new Scanner(System.in);
-    private boolean aktiv;
+    private Scanner input = new Scanner(System.in);
+    private boolean active;
 
     public ChatClient() {
-        aktiv = true;
+        active = true;
         getData();
-
     }
 
     public void getData(){
-        String nutzername = "";
+        String nutzername = "nmueller";
+        String passwort = "Ok16m8rx";
+        /*String nutzername = "";
         String passwort = "";
         do {
             System.out.print("Bitte geben Sie ihren Nutzernamen ein: ");
-            nutzername = eingabe.next();
+            nutzername = input.next();
             System.out.print("Bitte geben Sie ihr Passwort ein: ");
-            passwort = eingabe.next();
-        } while (!this.checkData(nutzername, passwort));
+            passwort = input.next();
+        } while (!this.checkData(nutzername, passwort));*/
 
         user = new User(nutzername, passwort);
     }
@@ -39,19 +40,19 @@ public class ChatClient {
         return true;
     }
 
-    public User getBenutzer() {
+    public User getUser() {
         return user;
     }
 
-    public boolean isAktiv() {
-        return aktiv;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setAktiv() {
-        this.aktiv = !aktiv;
+    public void setActive() {
+        this.active = !active;
     }
 
-    public Scanner getEingabe() {
-        return eingabe;
+    public Scanner getInput() {
+        return input;
     }
 }

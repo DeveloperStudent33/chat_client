@@ -1,19 +1,22 @@
 package de.thm.oop.chat;
 
 import de.thm.oop.chat.base.server.BasicTHMChatServer;
+import de.thm.oop.chat.messages.Picture;
 import de.thm.oop.chat.receiver.Receiver;
 import de.thm.oop.chat.receiver.Group;
+import de.thm.oop.chat.receiver.SingleReceiver;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class CommandHandler extends ChatClient{
     private Group group;
     BasicTHMChatServer server = new BasicTHMChatServer();
 
     public CommandHandler(){
-        while (super.isAktiv()){
-            String eingabe = super.getEingabe().nextLine();
-            commandAuswahl(filterCommand(eingabe));
+        while (super.isActive()){
+            String input = super.getInput().nextLine();
+            commandAuswahl(filterCommand(input));
         }
     }
 
@@ -30,7 +33,7 @@ public class CommandHandler extends ChatClient{
                 System.out.println("msgG");
                 break;
             case "msgP": // Niklas
-                System.out.println("msgP");
+                msgP(inputFiltered);
                 break;
             case "msgGP": // Niklas
                 System.out.println("msgGP");
@@ -51,8 +54,7 @@ public class CommandHandler extends ChatClient{
                 getGroup();
                 break;
             case "exit":
-                System.out.println("exit");
-                super.setAktiv();
+                super.setActive();
                 break;
         }
     }
@@ -78,7 +80,17 @@ public class CommandHandler extends ChatClient{
         System.out.println("Gruppe wurde erstellt");
     }
 
-    public void msg(String[] eingabeGefiltert) {
+    public void msg(String[] inputFiltered) {
+
+    }
+
+    public void msgP(String[] inputFiltered){
+        SingleReceiver receiver = new SingleReceiver(inputFiltered[1]);
+        Picture picture = new Picture(receiver);
+        picture.send(super.getUser());
+    }
+
+    public void msgGP(String[] inputFiltered){
 
     }
 
