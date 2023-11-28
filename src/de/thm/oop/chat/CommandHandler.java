@@ -1,5 +1,6 @@
 package de.thm.oop.chat;
 
+import de.thm.oop.chat.base.server.BasicTHMChatServer;
 import de.thm.oop.chat.receiver.Receiver;
 import de.thm.oop.chat.receiver.Group;
 
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 
 public class CommandHandler {
     private Group group;
+    BasicTHMChatServer server = new BasicTHMChatServer();
 
     public String[] filterCommand(String input) {
         return input.split(" ");

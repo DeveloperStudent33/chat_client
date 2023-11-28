@@ -12,7 +12,7 @@ Befehle:
 - getMsg        -> Nachrichten Abrufen [Anzeigen aller Nachrichten (bei Bildern genügt die bloße Anzeige der
                                     URL, die vom Server übermittelt wurde)]
 - getUsers      -> Alle Nutzer abrufen [Abruf einer Liste der Nutzer (= mögliche Chat-Partner]
-- createGroup   -> erstell eine Gruppe -> Gruppe muss nur währedn das Programm an ist leben -> kann direkt vergessen werde
+- createGroup   -> erstell eine Gruppe -> Gruppe muss nur während das Programm an ist leben -> kann direkt vergessen werde
 - getGroup      -> zeigt alle Gruppen an (?)
 - exit          -> Programm schließen/abbrechen
 
