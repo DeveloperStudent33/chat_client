@@ -12,11 +12,7 @@ public class ChatClient {
     public ChatClient() {
         aktiv = true;
         getData();
-        CommandHandler commands = new CommandHandler();
-        while (aktiv){
-            String eingabe = this.eingabe.nextLine();
-            commands.commandAuswahl(commands.filterCommand(eingabe));
-        }
+
     }
 
     public void getData(){
@@ -47,7 +43,15 @@ public class ChatClient {
         return user;
     }
 
+    public boolean isAktiv() {
+        return aktiv;
+    }
+
     public void setAktiv() {
         this.aktiv = !aktiv;
+    }
+
+    public Scanner getEingabe() {
+        return eingabe;
     }
 }

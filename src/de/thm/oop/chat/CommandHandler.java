@@ -6,9 +6,16 @@ import de.thm.oop.chat.receiver.Group;
 
 import java.util.ArrayList;
 
-public class CommandHandler {
+public class CommandHandler extends ChatClient{
     private Group group;
     BasicTHMChatServer server = new BasicTHMChatServer();
+
+    public CommandHandler(){
+        while (super.isAktiv()){
+            String eingabe = super.getEingabe().nextLine();
+            commandAuswahl(filterCommand(eingabe));
+        }
+    }
 
     public String[] filterCommand(String input) {
         return input.split(" ");
@@ -45,8 +52,7 @@ public class CommandHandler {
                 break;
             case "exit":
                 System.out.println("exit");
-                //super.setAktiv();
-                //funktioniert vorerst nicht --> Später überlegen --> kann man eine Methode der Unterklasse von der Oberklasse aus aufrufen (Objekt vorher initianlisert)
+                super.setAktiv();
                 break;
         }
     }
