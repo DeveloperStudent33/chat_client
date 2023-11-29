@@ -67,6 +67,7 @@ public class CommandHandler extends ChatClient{
     }
 
     public void msg(String[] inputFiltered) {
+        SingleReceiver receiver = new SingleReceiver(inputFiltered[1]);
 
     }
 

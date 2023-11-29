@@ -1,5 +1,6 @@
 package de.thm.oop.chat.messages;
 
+import de.thm.oop.chat.CommandHandler;
 import de.thm.oop.chat.User;
 import de.thm.oop.chat.receiver.Receiver;
 
