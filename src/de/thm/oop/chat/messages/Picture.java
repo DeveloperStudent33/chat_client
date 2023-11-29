@@ -8,12 +8,14 @@ import java.nio.file.Files;
 public class Picture extends Message {
     private String mimeType;
     private InputStream input;
+    private String path;
 
-    public Picture(Receiver receiver){
+    public Picture(Receiver receiver, String pictureName){
         super(receiver);
         try{
-            File picture = new File("pic/testbild.png");
-            //Inspiriert von https://www.baeldung.com/java-file-mime-type
+            File picture = new File("pic/" + pictureName);
+            path = picture.toPath().toString();
+            //Inspired by https://www.baeldung.com/java-file-mime-type
             mimeType = Files.probeContentType(picture.toPath());
             input = new FileInputStream(picture);
         } catch (FileNotFoundException e) {
@@ -23,15 +25,26 @@ public class Picture extends Message {
         }
     }
 
+    public Picture(String receiverName, String timestamp, int id, boolean out, String path, String mimeType){
+        super(receiverName, timestamp, id, out);
+        this.path = path;
+        this.mimeType = mimeType;
+    }
+
     @Override
-    // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
+    // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Message integrieren??
     public void send(User user) {
         try{
-            // da muss ein if mit "instanceof" (siehe Screencasts), obs eine Gruppe oder ein Singlereceiver ist --> das muss in COmmand Handler
-            super.getServer().sendImageMessage(user.getBenutzername(), user.getPasswort(), super.getReceiver().getName(), mimeType, input);
-            System.out.println("Bild gesendet");
+            super.getServer().sendImageMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), mimeType, input);
+            System.out.println("Picture sent to " + super.getReceiver().getName() + ".");
         } catch (IOException | IllegalArgumentException e){
             System.out.println("Ein unerwarteter Fehler ist aufgetreten");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.path + "' | " + (super.isOut() ? "empfangen" : "versendet");
+
     }
 }

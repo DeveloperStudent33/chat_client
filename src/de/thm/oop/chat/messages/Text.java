@@ -12,6 +12,12 @@ public class Text extends Message {
         super(receiver);
         this.text = text;
     }
+
+    public Text(String receiverName, String timestamp, int id, boolean out, String text){
+        super(receiverName, timestamp, id, out);
+        this.text = text;
+    }
+
     @Override
     // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
     public void send(User user) {
@@ -20,5 +26,10 @@ public class Text extends Message {
         } catch (IOException | IllegalArgumentException e){
             System.out.println("Ein unerwarteter Fehler ist aufgetreten");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.text + "' | " + (super.isOut() ? "empfangen" : "versendet");
     }
 }
