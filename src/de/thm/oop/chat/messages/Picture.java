@@ -19,7 +19,7 @@ public class Picture extends Message {
             mimeType = Files.probeContentType(picture.toPath());
             input = new FileInputStream(picture);
         } catch (FileNotFoundException e) {
-            System.out.println("Es konnte leider keine Datei zum hochladen gefunden werden");
+            System.out.println("Sorry, no file could be found to upload.");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -38,7 +38,7 @@ public class Picture extends Message {
             super.getServer().sendImageMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), mimeType, input);
             System.out.println("Picture sent to " + super.getReceiver().getName() + ".");
         } catch (IOException | IllegalArgumentException e){
-            System.out.println("Ein unerwarteter Fehler ist aufgetreten");
+            System.out.println("An unexpected error has occurred.");
         }
     }
 

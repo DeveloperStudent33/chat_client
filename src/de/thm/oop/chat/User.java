@@ -1,19 +1,19 @@
 package de.thm.oop.chat;
 
 public class User {
-    private String benutzername;
-    private String passwort;
+    private String username;
+    private String password;
 
-    public User(String benutzername, String passwort) {
-        this.benutzername = benutzername;
-        this.passwort = passwort;
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
-    public String getBenutzername() {
-        return benutzername;
+    public String getUsername() {
+        return username;
     }
 
-    public String getPasswort() {
-        return passwort;
+    public String getPassword() {
+        return password;
     }
 }

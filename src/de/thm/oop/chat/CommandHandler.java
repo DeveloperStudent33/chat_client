@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class CommandHandler extends ChatClient{
     BasicTHMChatServer server = new BasicTHMChatServer();
+    private ArrayList<Group> allGroups = new ArrayList<Group>();
 
     public CommandHandler(){
         while (super.isActive()){
@@ -54,10 +55,10 @@ public class CommandHandler extends ChatClient{
                 "- exit          -> Close/Cancel program");
     }
 
-    public void createGroup(String[] inputFiltered) { //Name
-        String[] groupMembers = new String[inputFiltered.length-1];
-        for (int i = 1; i < inputFiltered.length; i++) {
-            groupMembers[i-1] = inputFiltered[i];
+    public void createGroup(String[] inputFiltered) {
+        String[] groupMembers = new String[inputFiltered.length - 1];
+        for (int i = 0; i < groupMembers.length; i++) {
+            groupMembers[i] = inputFiltered[i + 1];
         }
 
         String groupName = inputFiltered[1];
@@ -112,5 +113,41 @@ public class CommandHandler extends ChatClient{
                 System.out.println("    " + (i) + ". " + group.getMembers().get(i).getName());
             }
         }
+    }
+
+    // Nachrichten auch mit Eingang oder Ausgang ausgeben
+    // --> jede Nachricht als ein Objekt!!!!!!!!!!!!!!
+    public void getmsg() {
+        String[] allMessages = new String[100];
+        // Server connection
+        try {
+            allMessages = server.getMostRecentMessages(super.getUser().getUsername(), super.getUser().getPassword());
+        } catch (IOException e) {
+            System.out.println("An unexpected error has occurred.");
+        }
+
+        for(int i = 0; i < allMessages.length; i++){
+            String[] splitMessage = allMessages[i].split("\\|");
+            // Save Messages to Objects
+            ArrayList<Message> messages = new ArrayList<Message>();
+            if(splitMessage[5].equals("img")){
+                messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[7], splitMessage[5]));
+            } else {
+                messages.add(new Text(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[5]));
+            }
+
+            for(Message msgs : messages){
+                System.out.println(msgs.toString());
+            }
+
+           /* System.out.println("Message-ID: " + splitMessage[0]);
+            System.out.println("Time: " + splitMessage[1]);
+            System.out.println("Direction: " + splitMessage[2]);
+            System.out.println("Chat partner: " + splitMessage[3]);
+            System.out.println("Message Type: " + splitMessage[4]);*/
+        }
+
+        //id    |timestamp          |direction ("in" or "out")|chat partner (sender/receiver)  |message type ("txt" or "img")|
+        //101112|2023-11-28 12:27:04|out                      |nmueller                        |img                          |image/png|19519|http://turing.iem.thm.de/chatJava/uploadedImages/6565ce88f1b71.png
     }
 }

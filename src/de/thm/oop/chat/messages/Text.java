@@ -23,9 +23,9 @@ public class Text extends Message {
     // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
     public void send(User user) {
         try{
-            super.getServer().sendTextMessage(user.getBenutzername(), user.getPasswort(), super.getReceiver().getName(), text);
+            super.getServer().sendTextMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), text);
         } catch (IOException | IllegalArgumentException e){
-            System.out.println("Ein unerwarteter Fehler ist aufgetreten");
+            System.out.println("An unexpected error has occurred.");
         }
     }
 

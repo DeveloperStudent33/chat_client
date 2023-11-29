@@ -15,26 +15,26 @@ public class ChatClient {
     }
 
     public void getData(){
-        String nutzername = "nmueller";
-        String passwort = "Ok16m8rx";
-        /*String nutzername = "";
-        String passwort = "";
+        String username = "nmueller";
+        String password = "Ok16m8rx";
+        /*String username = "";
+        String password = "";
         do {
-            System.out.print("Bitte geben Sie ihren Nutzernamen ein: ");
-            nutzername = input.next();
-            System.out.print("Bitte geben Sie ihr Passwort ein: ");
-            passwort = input.next();
-        } while (!this.checkData(nutzername, passwort));*/
+            System.out.print("Please enter your username: ");
+            username = input.next();
+            System.out.print("Please enter your password: ");
+            password = input.next();
+        } while (!this.checkData(username, password));*/
 
-        user = new User(nutzername, passwort);
+        user = new User(username, password);
     }
 
-    public boolean checkData(String nutzername, String passwort){
+    public boolean checkData(String username, String password){
         BasicTHMChatServer server = new BasicTHMChatServer();
         try{
-            server.getMessages(nutzername, passwort, 0);
+            server.getMessages(username, password, 0);
         } catch (IOException | IllegalArgumentException e){
-            System.out.println("Der Benutzername oder das Passwort sind leider falsch!");
+            System.out.println("The username or passsword is incorrect!");
             return false;
         }
         return true;
