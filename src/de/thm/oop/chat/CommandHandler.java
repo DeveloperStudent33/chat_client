@@ -5,7 +5,7 @@ import de.thm.oop.chat.messages.Message;
 import de.thm.oop.chat.messages.Picture;
 import de.thm.oop.chat.messages.Text;
 import de.thm.oop.chat.receiver.Group;
-import de.thm.oop.chat.receiver.SingleReceiver;
+import de.thm.oop.chat.receiver.Receiver;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -68,12 +68,12 @@ public class CommandHandler extends ChatClient{
     }
 
     public void msg(String[] inputFiltered) {
-        SingleReceiver receiver = new SingleReceiver(inputFiltered[1]);
+        Receiver receiver = new Receiver(inputFiltered[1]);
 
     }
 
     public void msgP(String argument1, String argument2){
-        SingleReceiver receiver = new SingleReceiver(argument1);
+        Receiver receiver = new Receiver(argument1);
         Picture picture = new Picture(receiver, argument2);
         picture.send(super.getUser());
     }
@@ -130,7 +130,7 @@ public class CommandHandler extends ChatClient{
             String[] splitMessage = allMessages[i].split("\\|");
             // Save Messages to Objects
             ArrayList<Message> messages = new ArrayList<Message>();
-            if(splitMessage[5].equals("img")){
+            if(splitMessage[4].equals("img")){
                 messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[7], splitMessage[5]));
             } else {
                 messages.add(new Text(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[5]));

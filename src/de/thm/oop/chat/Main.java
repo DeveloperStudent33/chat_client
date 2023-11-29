@@ -29,6 +29,9 @@ public class Main {
             System.out.println("Direction: " + splitMessage[2]);
             System.out.println("Chat partner: " + splitMessage[3]);
             System.out.println("Message Type: " + splitMessage[4]);
+            System.out.println("wasdas1: " + splitMessage[5]);
+            System.out.println("wasdas2: " + splitMessage[6]);
+            System.out.println("wasdas3: " + splitMessage[7]);
         }*/
     }
 }

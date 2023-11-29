@@ -18,7 +18,7 @@ public abstract class Message {
     }
 
     public Message(String receiverName, String timestamp, int id, boolean out){
-        this.receiverName = receiverName;
+        this.receiver = new Receiver(receiverName);
         this.timestamp = timestamp;
         this.id = id;
         this.out = out;

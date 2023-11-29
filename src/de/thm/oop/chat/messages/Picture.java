@@ -44,7 +44,6 @@ public class Picture extends Message {
 
     @Override
     public String toString() {
-        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.path + "' | " + (super.isOut() ? "empfangen" : "versendet");
-
+        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.path + "' | " + (super.isOut() ? "received" : "send");
     }
 }

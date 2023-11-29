@@ -3,23 +3,20 @@ package de.thm.oop.chat.receiver;
 import java.util.ArrayList;
 
 public class Group extends Receiver {
-    private ArrayList<SingleReceiver> members = new ArrayList<SingleReceiver>();
-    private String groupName;
+    private ArrayList<Receiver> members = new ArrayList<Receiver>();
 
     public Group(String[] members, String groupName) {
+        super(groupName);
         for (String member : members) {
-            this.members.add(new SingleReceiver(member));
+            this.members.add(new Receiver(member));
         }
-        this.groupName = groupName;
     }
 
-    @Override
     public String getName() {
-        return groupName;
+        return super.getName();
     }
 
-    public ArrayList<SingleReceiver> getMembers() {
+    public ArrayList<Receiver> getMembers() {
         return members;
     }
-
 }

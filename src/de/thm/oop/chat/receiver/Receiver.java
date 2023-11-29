@@ -1,7 +1,12 @@
 package de.thm.oop.chat.receiver;
 
-public abstract class Receiver {
+public class Receiver {
+    private String name;
 
-    public abstract String getName();
-
+    public Receiver(String name){
+        this.name = name;
+    }
+    public String getName() {
+        return name;
+    }
 }
