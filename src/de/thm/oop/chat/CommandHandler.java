@@ -41,7 +41,17 @@ public class CommandHandler extends ChatClient{
     }
 
     public void help() {
-        System.out.print("Platzhalter");
+        System.out.println("User\n" +
+                "- msg           -> Individual message -> msg [Receiver] [message] (Sends a message)\n" +
+                "- msgG          -> Group message\n" +
+                "- msgP          -> Picture message\n" +
+                "- msgGP         -> Group picture message\n" +
+                "- help          -> Instruction declaration\n" +
+                "- getMsg        -> Get messages [Retrieve all messages]\n" +
+                "- getUsers      -> Get all users [Retrieving a list of users (= potential chat partners]\n" +
+                "- createGroup   -> Create a group -> Group only has to live while the program is on -> can be forgotten directly\n" +
+                "- getGroups     -> Displays all groups (?)\n" +
+                "- exit          -> Close/Cancel program");
     }
 
     public void createGroup(String[] inputFiltered) { //Name
