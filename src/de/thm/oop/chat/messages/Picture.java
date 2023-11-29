@@ -4,14 +4,15 @@ import de.thm.oop.chat.User;
 import de.thm.oop.chat.receiver.Receiver;
 import java.io.*;
 import java.nio.file.Files;
+import java.text.SimpleDateFormat;
 
 public class Picture extends Message {
     private String mimeType;
     private InputStream input;
     private String path;
 
-    public Picture(Receiver receiver, String pictureName){
-        super(receiver);
+    public Picture(String receiverName, String pictureName){
+        super(receiverName);
         try{
             File picture = new File("pic/" + pictureName);
             path = picture.toPath().toString();
@@ -31,6 +32,7 @@ public class Picture extends Message {
         this.mimeType = mimeType;
     }
 
+
     @Override
     // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Message integrieren??
     public void send(User user) {
@@ -44,6 +46,6 @@ public class Picture extends Message {
 
     @Override
     public String toString() {
-        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.path + "' | " + (super.isOut() ? "received" : "send");
+        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.path + "' | " + (super.isOut() ? "send to " : "received from ") + super.getReceiver().getName();
     }
 }

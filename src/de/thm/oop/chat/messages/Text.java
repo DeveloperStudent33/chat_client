@@ -9,8 +9,8 @@ import java.io.IOException;
 public class Text extends Message {
     private String text;
 
-    public Text(Receiver receiver, String text){
-        super(receiver);
+    public Text(String receiverName, String text){
+        super(receiverName);
         this.text = text;
     }
 
@@ -20,7 +20,7 @@ public class Text extends Message {
     }
 
     @Override
-    // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
+    // Schlecht, da "send" bei Bild nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
     public void send(User user) {
         try{
             super.getServer().sendTextMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), text);
@@ -31,6 +31,6 @@ public class Text extends Message {
 
     @Override
     public String toString() {
-        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.text + "' | " + (super.isOut() ? "empfangen" : "versendet");
+        return "MessageID: " + super.getId() + " | " + super.getTimestamp() + " | '" + this.text + "' | " + (super.isOut() ? "send to " : "received from ") + super.getReceiver().getName();
     }
 }

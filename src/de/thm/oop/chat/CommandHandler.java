@@ -73,8 +73,7 @@ public class CommandHandler extends ChatClient{
     }
 
     public void msgP(String argument1, String argument2){
-        Receiver receiver = new Receiver(argument1);
-        Picture picture = new Picture(receiver, argument2);
+        Picture picture = new Picture(argument1, argument2);
         picture.send(super.getUser());
     }
 
@@ -115,8 +114,6 @@ public class CommandHandler extends ChatClient{
         }
     }
 
-    // Nachrichten auch mit Eingang oder Ausgang ausgeben
-    // --> jede Nachricht als ein Objekt!!!!!!!!!!!!!!
     public void getmsg() {
         String[] allMessages = new String[100];
         // Server connection
@@ -130,24 +127,20 @@ public class CommandHandler extends ChatClient{
             String[] splitMessage = allMessages[i].split("\\|");
             // Save Messages to Objects
             ArrayList<Message> messages = new ArrayList<Message>();
+            boolean out = true;
+            if(splitMessage[3].equals(super.getUser().getUsername())){
+                out = false;
+            }
             if(splitMessage[4].equals("img")){
-                messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[7], splitMessage[5]));
+                messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[7], splitMessage[5]));
             } else {
-                messages.add(new Text(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), false, splitMessage[5]));
+                messages.add(new Text(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[5]));
             }
 
+            // Paste Messages from Objects
             for(Message msgs : messages){
                 System.out.println(msgs.toString());
             }
-
-           /* System.out.println("Message-ID: " + splitMessage[0]);
-            System.out.println("Time: " + splitMessage[1]);
-            System.out.println("Direction: " + splitMessage[2]);
-            System.out.println("Chat partner: " + splitMessage[3]);
-            System.out.println("Message Type: " + splitMessage[4]);*/
         }
-
-        //id    |timestamp          |direction ("in" or "out")|chat partner (sender/receiver)  |message type ("txt" or "img")|
-        //101112|2023-11-28 12:27:04|out                      |nmueller                        |img                          |image/png|19519|http://turing.iem.thm.de/chatJava/uploadedImages/6565ce88f1b71.png
     }
 }
