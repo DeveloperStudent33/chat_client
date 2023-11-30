@@ -28,7 +28,7 @@ public class CommandHandler extends ChatClient{
     public void commandAuswahl(String[] inputFiltered) {
         switch (inputFiltered[0]) {
             case "msg" -> this.msg(inputFiltered);
-            case "msgG" -> System.out.println("msgG");
+            case "msgG" -> this.msgG(inputFiltered);
             case "msgP" -> this.msgP(inputFiltered[1], inputFiltered[2]);
             case "msgGP" -> this.msgGP(inputFiltered[1], inputFiltered[2]);
             case "help" -> this.help();
@@ -56,9 +56,9 @@ public class CommandHandler extends ChatClient{
     }
 
     public void createGroup(String[] inputFiltered) {
-        String[] groupMembers = new String[inputFiltered.length - 1];
+        String[] groupMembers = new String[inputFiltered.length - 2];
         for (int i = 0; i < groupMembers.length; i++) {
-            groupMembers[i] = inputFiltered[i + 1];
+            groupMembers[i] = inputFiltered[i + 2];
         }
 
         String groupName = inputFiltered[1];
@@ -68,8 +68,25 @@ public class CommandHandler extends ChatClient{
     }
 
     public void msg(String[] inputFiltered) {
-        Receiver receiver = new Receiver(inputFiltered[1]);
+        String txt = "";
+        for (int i = 2; i < inputFiltered.length; i++) {
+            if(i == inputFiltered.length-1){
+                txt = txt + inputFiltered[i];
+            } else {
+                txt = txt + inputFiltered[i] + " ";
+            }
+        }
+        Text text = new Text(inputFiltered[1], txt);
+        text.send(super.getUser());
+    }
 
+    public void msgG(String[] inputFiltered){
+        for (Group group : allGroups) {
+            for (int i = 0; i < group.getMembers().size(); i++) {
+                inputFiltered[1] = group.getMembers().get(i).getName();
+            }
+            msg(inputFiltered);
+        }
     }
 
     public void msgP(String argument1, String argument2){
@@ -108,8 +125,8 @@ public class CommandHandler extends ChatClient{
     public void getGroups() { //nochmal gucken
         for (Group group : allGroups) {
             System.out.println(group.getName() + ":");
-            for (int i = 1; i < group.getMembers().size(); i++) {
-                System.out.println("    " + (i) + ". " + group.getMembers().get(i).getName());
+            for (int i = 0; i < group.getMembers().size(); i++) {
+                System.out.println("    " + (i + 1) + ". " + group.getMembers().get(i).getName());
             }
         }
     }
