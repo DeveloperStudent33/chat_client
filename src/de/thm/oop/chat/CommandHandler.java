@@ -1,12 +1,8 @@
 package de.thm.oop.chat;
 
 import de.thm.oop.chat.base.server.BasicTHMChatServer;
-import de.thm.oop.chat.messages.Message;
-import de.thm.oop.chat.messages.Picture;
-import de.thm.oop.chat.messages.Text;
+import de.thm.oop.chat.messages.*;
 import de.thm.oop.chat.receiver.Group;
-import de.thm.oop.chat.receiver.Receiver;
-
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -107,7 +103,6 @@ public class CommandHandler extends ChatClient{
     }
 
     public void getUsers() {
-        //String[] allUsers =  server.getUsers(super.getUser().getUsername(), super.getUser().getPassword());
         try {
             String[] allUsers = server.getUsers(super.getUser().getUsername(), super.getUser().getPassword());
             System.out.println("User:");
@@ -117,12 +112,9 @@ public class CommandHandler extends ChatClient{
         } catch (IOException e) {
             System.out.println("An unexpected error has occurred.");
         }
-            // server.getUsers(...) ausführen und das zurückgelieferte Array speichern
-            // das Array ausgeben (alle Strings mit "println" ausgeben)
-
     }
 
-    public void getGroups() { //nochmal gucken
+    public void getGroups() {
         for (Group group : allGroups) {
             System.out.println(group.getName() + ":");
             for (int i = 0; i < group.getMembers().size(); i++) {
