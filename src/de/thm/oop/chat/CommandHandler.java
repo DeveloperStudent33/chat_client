@@ -78,10 +78,12 @@ public class CommandHandler extends ChatClient{
 
     public void msgG(String[] inputFiltered){
         for (Group group : allGroups) {
-            for (int i = 0; i < group.getMembers().size(); i++) {
-                inputFiltered[1] = group.getMembers().get(i).getName();
+            if(group.getName().equalsIgnoreCase(inputFiltered[1])){
+                for (int i = 0; i < group.getMembers().size(); i++) {
+                    inputFiltered[1] = group.getMembers().get(i).getName();
+                    msg(inputFiltered);
+                }
             }
-            msg(inputFiltered);
         }
     }
 
