@@ -6,7 +6,6 @@ import de.thm.oop.chat.base.server.BasicTHMChatServer;
 
 public class ChatClient {
     private User user;
-    private final Scanner input = new Scanner(System.in);
     private boolean active;
 
     public ChatClient() {
@@ -15,13 +14,14 @@ public class ChatClient {
     }
 
     public void getData(){
+        Scanner inputScanner = new Scanner(System.in);
         String username;
         String password;
         do {
             System.out.print("Please enter your username: ");
-            username = input.next();
+            username = inputScanner.next();
             System.out.print("Please enter your password: ");
-            password = input.next();
+            password = inputScanner.next();
         } while (!this.checkData(username, password));
 
         user = new User(username, password);
@@ -48,9 +48,5 @@ public class ChatClient {
 
     public void setActive() {
         this.active = !active;
-    }
-
-    public Scanner getInput() {
-        return input;
     }
 }

@@ -6,14 +6,16 @@ import de.thm.oop.chat.receiver.Group;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class CommandHandler extends ChatClient{
     private final BasicTHMChatServer server = new BasicTHMChatServer();
     private ArrayList<Group> allGroups = new ArrayList<Group>();
 
     public CommandHandler(){
+        Scanner scan = new Scanner(System.in);
         while (super.isActive()){
-            String input = super.getInput().nextLine();
+            String input = scan.nextLine();
             commandSelection(filterCommand(input));
         }
     }
