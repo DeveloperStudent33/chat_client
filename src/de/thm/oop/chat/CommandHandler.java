@@ -5,6 +5,7 @@ import de.thm.oop.chat.messages.*;
 import de.thm.oop.chat.receiver.Group;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class CommandHandler extends ChatClient{
     private final BasicTHMChatServer server = new BasicTHMChatServer();
@@ -39,10 +40,10 @@ public class CommandHandler extends ChatClient{
 
     public void help() {
         System.out.println("User\n" +
-                "- msg           -> Individual message -> msg [Receiver] [message] (Sends a message)\n" +
-                "- msgG          -> Group message\n" +
-                "- msgP          -> Picture message\n" +
-                "- msgGP         -> Group picture message\n" +
+                "- msg           -> Individual message      -> msg   [Receiver] [message] (Press Enter to send a message)\n" +
+                "- msgG          -> Group message           -> msgG  [GroupName] [message] (Press Enter to send a message)\n" +
+                "- msgP          -> Picture message         -> msgP  [Receiver] [file] (Press Enter to send a picture)\n" +
+                "- msgGP         -> Group picture message   -> msgGP [GroupName] [file] (Press Enter to send a picture)\n" +
                 "- help          -> Instruction declaration\n" +
                 "- getMsg        -> Get messages [Retrieve all messages]\n" +
                 "- getUsers      -> Get all users [Retrieving a list of users (= potential chat partners]\n" +
@@ -108,6 +109,7 @@ public class CommandHandler extends ChatClient{
         try {
             String[] allUsers = server.getUsers(super.getUser().getUsername(), super.getUser().getPassword());
             System.out.println("User:");
+            Arrays.sort(allUsers);
             for (String user : allUsers) {
                 System.out.println(user);
             }
