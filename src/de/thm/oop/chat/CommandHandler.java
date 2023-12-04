@@ -7,13 +7,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class CommandHandler extends ChatClient{
-    BasicTHMChatServer server = new BasicTHMChatServer();
+    private final BasicTHMChatServer server = new BasicTHMChatServer();
     private ArrayList<Group> allGroups = new ArrayList<Group>();
 
     public CommandHandler(){
         while (super.isActive()){
             String input = super.getInput().nextLine();
-            commandAuswahl(filterCommand(input));
+            commandSelection(filterCommand(input));
         }
     }
 
@@ -21,7 +21,7 @@ public class CommandHandler extends ChatClient{
         return input.split(" ");
     }
 
-    public void commandAuswahl(String[] inputFiltered) {
+    public void commandSelection(String[] inputFiltered) {
         switch (inputFiltered[0]) {
             case "msg" -> this.msg(inputFiltered);
             case "msgG" -> this.msgG(inputFiltered);
@@ -46,8 +46,8 @@ public class CommandHandler extends ChatClient{
                 "- help          -> Instruction declaration\n" +
                 "- getMsg        -> Get messages [Retrieve all messages]\n" +
                 "- getUsers      -> Get all users [Retrieving a list of users (= potential chat partners]\n" +
-                "- createGroup   -> Create a group -> Group only has to live while the program is on -> can be forgotten directly\n" +
-                "- getGroups     -> Displays all groups (?)\n" +
+                "- createGroup   -> Create a group          -> craeteGroup [Name] [Member1] [Member2] [Member3] ...\n" +
+                "- getGroups     -> Displays all groups\n" +
                 "- exit          -> Close/Cancel program");
     }
 
@@ -134,22 +134,22 @@ public class CommandHandler extends ChatClient{
             System.out.println("An unexpected error has occurred.");
         }
 
-        for(int i = 0; i < allMessages.length; i++){
-            String[] splitMessage = allMessages[i].split("\\|");
+        for (String allMessage : allMessages) {
+            String[] splitMessage = allMessage.split("\\|");
             // Save Messages to Objects
-            ArrayList<Message> messages = new ArrayList<Message>();
-            boolean out = true;
-            if(splitMessage[3].equals(super.getUser().getUsername())){
-                out = false;
+            ArrayList<Message> messages = new ArrayList<>();
+            boolean out = false;
+            if(splitMessage[3].equalsIgnoreCase("out")){
+                out = true;
             }
-            if(splitMessage[4].equals("img")){
+            if (splitMessage[4].equals("img")) {
                 messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[7], splitMessage[5]));
             } else {
                 messages.add(new Text(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[5]));
             }
 
             // Paste Messages from Objects
-            for(Message msgs : messages){
+            for (Message msgs : messages) {
                 System.out.println(msgs.toString());
             }
         }

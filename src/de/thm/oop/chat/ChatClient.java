@@ -6,25 +6,23 @@ import de.thm.oop.chat.base.server.BasicTHMChatServer;
 
 public class ChatClient {
     private User user;
-    private Scanner input = new Scanner(System.in);
+    private final Scanner input = new Scanner(System.in);
     private boolean active;
 
     public ChatClient() {
-        active = true;
         getData();
+        active = true;
     }
 
     public void getData(){
-        String username = "nmueller";
-        String password = "Ok16m8rx";
-        /*String username = "";
-        String password = "";
+        String username;
+        String password;
         do {
             System.out.print("Please enter your username: ");
             username = input.next();
             System.out.print("Please enter your password: ");
             password = input.next();
-        } while (!this.checkData(username, password));*/
+        } while (!this.checkData(username, password));
 
         user = new User(username, password);
     }
@@ -34,7 +32,7 @@ public class ChatClient {
         try{
             server.getMessages(username, password, 0);
         } catch (IOException | IllegalArgumentException e){
-            System.out.println("The username or passsword is incorrect!");
+            System.out.println("The username or password is incorrect!");
             return false;
         }
         return true;

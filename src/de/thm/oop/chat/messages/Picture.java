@@ -1,10 +1,8 @@
 package de.thm.oop.chat.messages;
 
 import de.thm.oop.chat.User;
-import de.thm.oop.chat.receiver.Receiver;
 import java.io.*;
 import java.nio.file.Files;
-import java.text.SimpleDateFormat;
 
 public class Picture extends Message {
     private String mimeType;
@@ -34,7 +32,6 @@ public class Picture extends Message {
 
 
     @Override
-    // Schlecht, da "send" bei Text nahzu identisch --> womöglich Teilweise in Message integrieren??
     public void send(User user) {
         try{
             super.getServer().sendImageMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), mimeType, input);

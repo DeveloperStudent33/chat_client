@@ -2,6 +2,7 @@ package de.thm.oop.chat.messages;
 
 import de.thm.oop.chat.User;
 import java.io.IOException;
+import java.sql.SQLOutput;
 
 public class Text extends Message {
     private String text;
@@ -17,12 +18,12 @@ public class Text extends Message {
     }
 
     @Override
-    // Schlecht, da "send" bei Bild nahzu identisch --> womöglich Teilweise in Nachricht integrieren??
     public void send(User user) {
         try{
             super.getServer().sendTextMessage(user.getUsername(), user.getPassword(), super.getReceiver().getName(), text);
         } catch (IOException | IllegalArgumentException e){
             System.out.println("An unexpected error has occurred.");
+
         }
     }
 

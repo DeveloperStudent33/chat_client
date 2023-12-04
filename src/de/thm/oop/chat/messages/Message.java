@@ -9,7 +9,7 @@ public abstract class Message {
     private String timestamp;
     private int id;
     private boolean out;
-    private BasicTHMChatServer server = new BasicTHMChatServer();
+    private final BasicTHMChatServer server = new BasicTHMChatServer();
 
     public Message(String receiverName){
         this.receiver = new Receiver(receiverName);
