@@ -12,7 +12,7 @@ public class Picture extends Message {
     public Picture(String receiverName, String pictureName){
         super(receiverName);
         try{
-            File picture = new File("pic/" + pictureName);
+            File picture = new File("/" + pictureName);
             path = picture.toPath().toString();
             //Inspired by https://www.baeldung.com/java-file-mime-type
             mimeType = Files.probeContentType(picture.toPath());
