@@ -142,10 +142,6 @@ public class CommandHandler extends ChatClient{
             String[] splitMessage = allMessage.split("\\|");
             // Save Messages to Objects
             ArrayList<Message> messages = new ArrayList<>();
-            /*boolean out = true;
-            if(splitMessage[3].equalsIgnoreCase("out")){
-                out = false;
-            }*/
             boolean out = (splitMessage[2].equals("out"));
             if (splitMessage[4].equals("img")) {
                 messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[7], splitMessage[5]));
