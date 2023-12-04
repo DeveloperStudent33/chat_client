@@ -25,6 +25,7 @@ public class ChatClient {
         } while (!this.checkData(username, password));
 
         user = new User(username, password);
+        System.out.println("Logged in as " + username + "!");
     }
 
     public boolean checkData(String username, String password){

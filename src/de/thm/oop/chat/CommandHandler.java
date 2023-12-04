@@ -130,10 +130,10 @@ public class CommandHandler extends ChatClient{
     }
 
     public void getmsg() {
-        String[] allMessages = new String[100];
+        String[] allMessages = new String[0];
         // Server connection
         try {
-            allMessages = server.getMostRecentMessages(super.getUser().getUsername(), super.getUser().getPassword());
+            allMessages = server.getMessages(super.getUser().getUsername(), super.getUser().getPassword(),0);
         } catch (IOException e) {
             System.out.println("An unexpected error has occurred.");
         }
@@ -142,10 +142,11 @@ public class CommandHandler extends ChatClient{
             String[] splitMessage = allMessage.split("\\|");
             // Save Messages to Objects
             ArrayList<Message> messages = new ArrayList<>();
-            boolean out = false;
+            /*boolean out = true;
             if(splitMessage[3].equalsIgnoreCase("out")){
-                out = true;
-            }
+                out = false;
+            }*/
+            boolean out = (splitMessage[2].equals("out"));
             if (splitMessage[4].equals("img")) {
                 messages.add(new Picture(splitMessage[3], splitMessage[1], Integer.parseInt(splitMessage[0]), out, splitMessage[7], splitMessage[5]));
             } else {
