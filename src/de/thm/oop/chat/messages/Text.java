@@ -2,7 +2,6 @@ package de.thm.oop.chat.messages;
 
 import de.thm.oop.chat.User;
 import java.io.IOException;
-import java.sql.SQLOutput;
 
 public class Text extends Message {
     private String text;

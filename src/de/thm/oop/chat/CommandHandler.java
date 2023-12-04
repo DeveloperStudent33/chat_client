@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class CommandHandler extends ChatClient{
     private final BasicTHMChatServer server = new BasicTHMChatServer();
-    private ArrayList<Group> allGroups = new ArrayList<Group>();
+    private ArrayList<Group> allGroups = new ArrayList<>();
 
     public CommandHandler(){
         Scanner scan = new Scanner(System.in);
