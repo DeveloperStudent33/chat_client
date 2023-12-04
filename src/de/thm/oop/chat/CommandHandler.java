@@ -42,13 +42,13 @@ public class CommandHandler extends ChatClient{
 
     public void help() {
         System.out.println("User\n" +
-                "- msg           -> Individual message      -> msg   [Receiver] [message] (Press Enter to send a message)\n" +
+                "- msg           -> Individual message      -> msg   [Receiver]  [message] (Press Enter to send a message)\n" +
                 "- msgG          -> Group message           -> msgG  [GroupName] [message] (Press Enter to send a message)\n" +
-                "- msgP          -> Picture message         -> msgP  [Receiver] [file] (Press Enter to send a picture)\n" +
-                "- msgGP         -> Group picture message   -> msgGP [GroupName] [file] (Press Enter to send a picture)\n" +
+                "- msgP          -> Picture message         -> msgP  [Receiver]  [file]    (Press Enter to send a picture)\n" +
+                "- msgGP         -> Group picture message   -> msgGP [GroupName] [file]    (Press Enter to send a picture)\n" +
                 "- help          -> Instruction declaration\n" +
-                "- getMsg        -> Get messages [Retrieve all messages]\n" +
-                "- getUsers      -> Get all users [Retrieving a list of users (= potential chat partners]\n" +
+                "- getMsg        -> Get messages    [Retrieve all messages]\n" +
+                "- getUsers      -> Get all users   [Retrieving a list of users (= potential chat partners]\n" +
                 "- createGroup   -> Create a group          -> craeteGroup [Name] [Member1] [Member2] [Member3] ...\n" +
                 "- getGroups     -> Displays all groups\n" +
                 "- exit          -> Close/Cancel program");
