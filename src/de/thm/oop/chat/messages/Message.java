@@ -1,6 +1,6 @@
 package de.thm.oop.chat.messages;
 
-import de.thm.oop.chat.User;
+import de.thm.oop.chat.chat_client.User;
 import de.thm.oop.chat.base.server.BasicTHMChatServer;
 import de.thm.oop.chat.receiver.Receiver;
 

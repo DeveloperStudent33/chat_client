@@ -1,0 +1,12 @@
+Zu-Tun:
+- Hamster-Klasse schreiben, welche so Sachen wie vor, linksUm, nimm in ChatBefehle umwandelt
+- Schnittstelle, neue Befehlinterpretation in ChatClient einbauen (nicht mehr über Scanner)
+- Alogrithmus anpassen, sodass alles über ein 2D Array geht (löst auch das Problem, dass er sich zu oft dreht)
+- Init lösen, sodass er zuerst abfragt (kann man in "Main" machen)
+- Fehler korrigieren, dass der Hamster nach dem Code weiter macht
+
+
+- Präsentation vorbereiten
+
+
+!Schleife einbauen, welche wartet, bis das Territorium kam!

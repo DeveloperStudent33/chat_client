@@ -1,4 +1,4 @@
-package de.thm.oop.chat;
+package de.thm.oop.chat.chat_client;
 
 public class User {
     private final String username;

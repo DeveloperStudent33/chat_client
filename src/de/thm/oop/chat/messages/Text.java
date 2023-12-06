@@ -1,6 +1,6 @@
 package de.thm.oop.chat.messages;
 
-import de.thm.oop.chat.User;
+import de.thm.oop.chat.chat_client.User;
 import java.io.IOException;
 
 public class Text extends Message {

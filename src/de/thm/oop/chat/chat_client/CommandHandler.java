@@ -1,4 +1,4 @@
-package de.thm.oop.chat;
+package de.thm.oop.chat.chat_client;
 
 import de.thm.oop.chat.base.server.BasicTHMChatServer;
 import de.thm.oop.chat.messages.*;
@@ -31,7 +31,7 @@ public class CommandHandler extends ChatClient{
             case "msgP" -> this.msgP(inputFiltered[1], inputFiltered[2]);
             case "msgGP" -> this.msgGP(inputFiltered[1], inputFiltered[2]);
             case "help" -> this.help();
-            case "getMsg" -> this.getmsg();
+            case "getMsg" -> this.getMsg();
             case "getUsers" -> this.getUsers();
             case "createGroup" -> this.createGroup(inputFiltered);
             case "getGroups" -> this.getGroups();
@@ -129,7 +129,7 @@ public class CommandHandler extends ChatClient{
         }
     }
 
-    public void getmsg() {
+    public void getMsg() {
         String[] allMessages = new String[0];
         // Server connection
         try {

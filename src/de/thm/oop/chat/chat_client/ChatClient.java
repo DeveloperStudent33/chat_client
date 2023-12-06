@@ -1,4 +1,4 @@
-package de.thm.oop.chat;
+package de.thm.oop.chat.chat_client;
 
 import java.io.IOException;
 import java.util.Scanner;
